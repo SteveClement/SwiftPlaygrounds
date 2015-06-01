@@ -171,12 +171,50 @@ println("If you multiply fun (\(fun)) by THE tinyAnswer (\(answer)) you will get
 
 // -> /!\ NO implicit converions!!! do it with Int(), Float(), Double(), String() etc…
 
+let dog: Character = "🐶"
+let cow: Character = "🐮"
+let dogCow = "\(dog)\(cow)"
+// dogCow is equal to "🐶🐮"
 
-let someDouble = 3.14159265359, someDoubleFormat = ".3"
-//let someDouble = 3.14523423432432
 
-println("\(someDouble)")
+// Encoding UTF-8 - UTF-16 - ISOfoo see -> https://en.wikipedia.org/wiki/Character_encoding
+let dogString = "Dog!🐶"
 
+for codeUnit in dogString.utf8 {
+    print("\(codeUnit) ")
+}
+print("\n")
+
+for codeUnit in dogString.utf16 {
+    print("\(codeUnit) ")
+}
+print("\n")
+
+// Example with a switch statement
+
+let numberSymbol: Character = "三"  // Simplified Chinese for the number 3
+var possibleIntegerValue: Int?
+switch numberSymbol {
+case "1", "١", "一", "๑":
+    possibleIntegerValue = 1
+case "2", "٢", "二", "๒":
+    possibleIntegerValue = 2
+case "3", "٣", "三", "๓":
+    possibleIntegerValue = 3
+case "4", "٤", "四", "๔":
+    possibleIntegerValue = 4
+default:
+    break
+}
+if let integerValue = possibleIntegerValue {
+    println("The integer value of \(numberSymbol) is \(integerValue).")
+} else {
+    println("An integer value could not be found for \(numberSymbol).")
+}
+// prints "The integer value of 三 is 3.
+
+
+// Optionals
 //var optName: String? = "Steve C"
 var optName: String?
 if optName != nil {
@@ -216,6 +254,4 @@ largest
 
 // Dictionaries
 
-for a in 0..<42 {
-    a
-}
+
